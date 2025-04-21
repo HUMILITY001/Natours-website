@@ -1,0 +1,194 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixin";
+
+.card{
+    // functions
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 52rem;
+    margin-right: 4rem;
+    @include mixin.respond(tab-port){
+        margin-right: 0;
+    }
+
+    &__side{
+        height: 52rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba(variables.$color-black, .15);
+
+
+        &--front{
+            background-color: variables.$color-white;
+        }
+        &--back{
+            transform: rotateY(180deg);
+            &-1{
+                background-image: linear-gradient(to right bottom, variables.$color-secondary-light, variables.$color-secondary-dark);
+            }
+            &-2{
+                background-image: linear-gradient(to right bottom, variables.$color-tertiary-light, variables.$color-tertiary-dark);
+            }
+            &-3{
+                background-image: linear-gradient(to right bottom, variables.$color-primary-light, variables.$color-primary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back{
+        transform: rotateY(0deg);
+    }
+
+    // front card designs
+    &__photo{
+        height: 23rem;
+        background-size: cover;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        &-1{
+            background-image:
+            linear-gradient(to right bottom, rgba(variables.$color-secondary-light, .85), rgba(variables.$color-secondary-dark, .85)),
+            url(/img/nat-5.jpg);
+        }
+
+        &-2{
+            background-image:
+            linear-gradient(to right bottom, rgba(variables.$color-tertiary-light, .85), rgba(variables.$color-tertiary-dark, .85)),
+            url(/img/nat-6.jpg);
+        }
+        &-3{
+            background-image:
+            linear-gradient(to right bottom, rgba(variables.$color-primary-light, .85), rgba(variables.$color-primary-dark, .85)),
+            url(/img/nat-7.jpg);
+        }
+    }
+    &__heading{
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        position: absolute;
+        top: 12rem;
+        right: 2.5rem;
+        color: variables.$color-white;
+        text-align: right;
+        width: 70%;
+    }
+    &__heading-span{
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      &--1{
+        background-image: linear-gradient(to right bottom, rgba(variables.$color-secondary-light, .85), rgba(variables.$color-secondary-dark, .85));
+      }
+      &--2{
+        background-image: linear-gradient(to right bottom, rgba(variables.$color-tertiary-light, .85), rgba(variables.$color-tertiary-dark, .85));
+      } 
+      &--3{
+        background-image: linear-gradient(to right bottom, rgba(variables.$color-primary-light, .85), rgba(variables.$color-primary-dark, .85));
+      }       
+    }
+    &__details{
+        padding: 3rem;
+        ul{
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            li{
+                font-size: 1.5rem;
+                padding: 1rem;
+                text-align: center;
+                &:not(:last-child){
+                    border-bottom: 1px solid variables.$color-gray-2;
+                }
+            }
+        }
+    }
+
+    // back card designs
+    &__cta{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+
+    }
+    &__price-box{
+        text-align: center;
+        color: variables.$color-white;
+    }
+    &__price-only{
+        text-transform: uppercase;
+        font-size: 1.5rem;
+    }
+    .card__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+    // Media Query
+    @include mixin.respond(tab-port){
+        position: relative;
+        height: auto;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba(variables.$color-black, .15);
+        &{
+            background-color: variables.$color-white;
+        }
+
+        &__side{
+            height: auto;
+            position: relative;
+            
+
+            &--back{
+                transform: rotateY(0deg);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+                margin-top: -4.2rem;
+            }
+        }
+
+        &:hover &__side--front{
+            transform: rotateY(0);
+        }
+        
+        &__details{
+            margin-bottom: 2.5rem;
+        }
+        
+
+        // back card designs
+        &__cta{
+            position: relative;
+            top: 0%;
+            left: 0%;
+            transform: translate(0);
+            width: 100%;
+            padding: 7rem 4rem 4rem 4rem;
+        }
+        &__price-box{
+            text-align: center;
+            color: variables.$color-white;
+        }
+        
+        .card__price-value {
+            font-size: 6rem;
+            font-weight: 100;
+        }
+    }
+}

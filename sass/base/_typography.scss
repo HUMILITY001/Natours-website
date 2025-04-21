@@ -1,0 +1,81 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixin";
+
+
+body{
+    font-family: lato, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 1.6rem;
+    color: variables.$color-gray;
+}
+.heading-primary{
+    color: variables.$color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+
+    &--main{
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        
+        @include mixin.respond(phone){
+            font-size: 4.5rem;
+            letter-spacing: 2rem;
+        }
+
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+    
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        margin-bottom: 6rem;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+
+        @include mixin.respond(phone){
+            font-size: 1.5rem;
+            letter-spacing: .5rem;
+        }
+    }
+}
+.heading-secondary{
+    background-image: linear-gradient( to right ,variables.$color-primary-light, variables.$color-primary-dark);
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    display: inline-block;
+    color: transparent;
+    transition: all .2s;
+    letter-spacing: .2rem;
+
+    &:hover{
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba(variables.$color-black, .2);
+    }
+    @include mixin.respond(tab-port){
+        font-size: 3rem;
+    }
+    @include mixin.respond(phone){
+        font-size: 2.3rem;
+    }
+}
+.heading-tertiary{
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.paragraph{
+    font-size: 1.6rem;
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+}

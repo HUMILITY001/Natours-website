@@ -1,0 +1,35 @@
+@use '../abstracts/mixin';
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+
+    @include mixin.respond(tab-land){
+        font-size: 56%;
+    }
+    
+    @include mixin.respond(tab-port){
+        font-size: 50%;
+    }
+
+    @include mixin.respond(big-desktop){
+        font-size: 75%;
+    }
+
+}
+body{
+    box-sizing: border-box;
+    padding: 1.5rem;
+    
+    @include mixin.respond(tab-port){
+        padding: 0;
+        margin-right: 0 !important;
+    }
+}

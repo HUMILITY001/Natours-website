@@ -1,0 +1,93 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixin';
+
+.form{
+    &__group:not(:last-child){
+        margin-bottom: 1.5rem;
+    }
+    &__input{
+        display: block;
+        border: none;
+        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
+        font-family: inherit;
+        border-radius: 2px;
+        width: 90%;
+        background-color: variables.$color-white;
+        color: variables.$color-gray-2;
+        transition: all .2s;
+
+        @include mixin.respond(phone){
+            width: 100%;
+        }
+
+        &:focus{
+            outline: none;
+            border-bottom: 3px solid variables.$color-primary-green;
+            box-shadow: 0 0 0 3px rgba(variables.$color-primary-green, .2);
+        }
+        &:focus:invalid{
+            border-bottom: 3px solid variables.$color-secondary-dark;
+        }
+
+    }
+    &__label{
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: .5rem 2rem;
+        color: variables.$color-gray-2;
+        transition: all .3s;
+    }
+    &__input:placeholder-shown ~ &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group{
+        display: inline-block;
+        margin-right: 2rem;
+        
+        @include mixin.respond(tab-port){
+            display: block;
+            margin-bottom: 2rem;
+        }
+    }
+    &__radio-input{
+        display: none;
+    }
+    &__radio-label{
+        font-size: 1.6rem;
+        color: variables.$color-gray-3;
+        position: relative;
+        padding-left: 4rem;
+    }
+    &__radio-button{
+        display: block;
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid variables.$color-primary-dark;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+        &::after{
+            content: '';
+            display: block;
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            background-color: variables.$color-primary-dark;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all .4s;
+        }
+    }
+    &__radio-input:checked ~ &__radio-label > &__radio-button::after{
+        opacity: 1;
+    }
+}

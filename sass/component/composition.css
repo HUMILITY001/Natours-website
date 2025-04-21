@@ -1,0 +1,32 @@
+.composition {
+  position: relative;
+}
+.composition__photo {
+  position: absolute;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  width: 55%;
+  outline-offset: 2rem;
+  transition: all 0.4s;
+  z-index: 1;
+}
+.composition__photo--p1 {
+  left: 0;
+  top: -2rem;
+}
+.composition__photo--p2 {
+  right: 0;
+  top: 2rem;
+}
+.composition__photo--p3 {
+  left: 20%;
+  top: 10rem;
+}
+.composition__photo:hover {
+  transform: scale(1.05) translateY(-0.5rem);
+  box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.4);
+  outline: 1.5rem solid #7ed56f;
+  z-index: 2;
+}
+.composition:hover .composition:hover:not(:hover) {
+  transform: scale(0.95);
+}/*# sourceMappingURL=composition.css.map */

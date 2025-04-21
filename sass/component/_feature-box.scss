@@ -1,0 +1,38 @@
+@use "../abstracts/variables";
+@use '../abstracts/mixin';
+
+.feature-box{
+    background-color: rgba(variables.$color-white, .8);
+    margin-right: 5rem;
+    padding: 2.5rem;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(variables.$color-black, .15);
+    max-width: 35%;
+    transition: all .4s;
+    
+    @include mixin.respond(tab-port){
+        max-width: 100%;
+        padding: 2rem;
+        margin-right: 0;
+        &:not(:last-child){
+            margin-bottom: 6rem;
+        }
+    }
+   
+    &__icon{
+    background-image: linear-gradient( to right ,variables.$color-primary-light, variables.$color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    }
+    @include mixin.respond(tab-port){
+        margin-bottom: 0;
+    }
+    &:hover{
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+}
